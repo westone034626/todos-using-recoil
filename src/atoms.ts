@@ -18,7 +18,10 @@ export const currentCategory = atom<string>({
 
 export const categoryState = atom<string[]>({
   key: 'catogory',
-  default: [Categories.TO_DO, Categories.DOING, Categories.DONE],
+  default:
+    localStorage.getItem('categoryState') === null
+      ? [Categories.TO_DO, Categories.DOING, Categories.DONE]
+      : JSON.parse(localStorage.getItem('categoryState') as string),
 });
 
 export const toDoState = atom<IToDo[]>({

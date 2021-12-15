@@ -22,7 +22,11 @@ function CreateCategory() {
       setError('category', { message: 'already exsist' });
       return;
     }
-    setCategory((oldCategories) => [...oldCategories, trimmedCategory]);
+    setCategory((oldCategories) => {
+      const newCategories = [...oldCategories, trimmedCategory];
+      localStorage.setItem('categoryState', JSON.stringify(newCategories));
+      return newCategories;
+    });
     setValue('category', '');
   };
   return (
