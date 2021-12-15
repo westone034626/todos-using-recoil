@@ -31,7 +31,12 @@ function CreateCategory() {
   };
   return (
     <form onSubmit={handleSubmit(handleValid)}>
-      <input {...register('category')} placeholder="Write a Category" />
+      <input
+        {...register('category', {
+          required: 'Please write a Category',
+        })}
+        placeholder="Write a Category"
+      />
       <button>Add</button>
       {errors?.category?.message && <span>{errors?.category?.message}</span>}
     </form>
