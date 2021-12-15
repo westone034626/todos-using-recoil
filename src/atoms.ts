@@ -13,7 +13,10 @@ export interface IToDo {
 
 export const currentCategory = atom<string>({
   key: 'currentCategory',
-  default: Categories.TO_DO,
+  default:
+    localStorage.getItem('currentCategory') === null
+      ? Categories.TO_DO
+      : JSON.parse(localStorage.getItem('currentCategory') as string),
 });
 
 export const categoryState = atom<string[]>({

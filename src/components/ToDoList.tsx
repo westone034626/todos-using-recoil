@@ -10,7 +10,11 @@ function ToDoList() {
   const [category, setCategory] = useRecoilState(currentCategory);
   const categories = useRecoilValue(categoryState);
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
-    setCategory(event.currentTarget.value);
+    const {
+      currentTarget: { value },
+    } = event;
+    setCategory(value);
+    localStorage.setItem('currentCategory', JSON.stringify(value));
   };
   console.log(toDos);
   return (
