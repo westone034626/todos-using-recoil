@@ -9,7 +9,12 @@ interface IForm {
 function CreateToDo() {
   const setToDos = useSetRecoilState(toDoState);
   const category = useRecoilValue(currentCategory);
-  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<IForm>();
   const handleValid = ({ toDo }: IForm) => {
     setToDos((oldToDos) => {
       const newTodos = [{ text: toDo, id: Date.now(), category }, ...oldToDos];
@@ -27,6 +32,7 @@ function CreateToDo() {
         placeholder="Write a to do"
       />
       <button>Add</button>
+      {errors?.toDo?.message && <span>{errors?.toDo?.message}</span>}
     </form>
   );
 }
