@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/todos-using-recoil/static/js/main.a116b040.chunk.js",
-    "main.js.map": "/todos-using-recoil/static/js/main.a116b040.chunk.js.map",
+    "main.js": "/todos-using-recoil/static/js/main.e1a6cbca.chunk.js",
+    "main.js.map": "/todos-using-recoil/static/js/main.e1a6cbca.chunk.js.map",
     "runtime-main.js": "/todos-using-recoil/static/js/runtime-main.38a031ac.js",
     "runtime-main.js.map": "/todos-using-recoil/static/js/runtime-main.38a031ac.js.map",
     "static/js/2.a9604a1c.chunk.js": "/todos-using-recoil/static/js/2.a9604a1c.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.38a031ac.js",
     "static/js/2.a9604a1c.chunk.js",
-    "static/js/main.a116b040.chunk.js"
+    "static/js/main.e1a6cbca.chunk.js"
   ]
 }
