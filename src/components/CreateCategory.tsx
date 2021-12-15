@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { categoryState } from '../atoms';
 import _ from 'lodash';
 
@@ -8,10 +8,21 @@ interface IForm {
 }
 
 function CreateCategory() {
-  const setCategory = useSetRecoilState(categoryState);
-  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const [categories, setCategory] = useRecoilState(categoryState);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm<IForm>();
   const handleValid = ({ category }: IForm) => {
-    setCategory((oldCategories) => [...oldCategories, _.trim(category)]);
+    const trimmedCategory = _.trim(category);
+    if (_.indexOf(categories, trimmedCategory) !== -1) {
+      setError('category', { message: 'already exsist' });
+      return;
+    }
+    setCategory((oldCategories) => [...oldCategories, trimmedCategory]);
     setValue('category', '');
   };
   return (
@@ -23,6 +34,7 @@ function CreateCategory() {
         placeholder="Write a Category"
       />
       <button>Add</button>
+      {errors?.category?.message && <span>{errors?.category?.message}</span>}
     </form>
   );
 }
